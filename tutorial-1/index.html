@@ -14,12 +14,16 @@
     <h1>Hello, Vue</h1>
 
     <div id="content">
-      <p>{{title }} - {{author}} - {{age}}</p>
-      <button @click="age++" style="margin: 0.2rem">Increase age</button>
-      <button @click="age--" style="margin: 0.2rem">Decrease age</button>
-      <div @click="changeTitle('something else')" style="cursor: pointer">
-        Change book title
+      <div v-if="showBooks">
+        <p>{{title }} - {{author}} - {{age}}</p>
       </div>
+
+      <button @click="toggleShowBox">
+        <span v-if="showBooks">Hide Books</span>
+        <span v-else>Show Books</span>
+      </button>
+
+      <div v-show="showBooks">currently showing books</div>
     </div>
 
     <script src="app.js"></script>
