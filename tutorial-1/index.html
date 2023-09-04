@@ -24,10 +24,16 @@
         align-items: center;
         gap: 0.8rem;
         padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
       }
 
       li p {
         margin: 0;
+      }
+
+      li.fav {
+        background-color: bisque;
       }
     </style>
   </head>
@@ -39,7 +45,11 @@
 
       <div v-if="showBooks">
         <ul>
-          <li v-for="book in books">
+          <li
+            v-for="book in books"
+            :class="{fav: book.isFav}"
+            @click="toggleFav(book)"
+          >
             <img :src="book.image" :alt="book.title" />
             <p>{{ book.title }} - {{ book.author }}</p>
           </li>
