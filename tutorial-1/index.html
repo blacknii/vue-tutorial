@@ -25,7 +25,9 @@
 
     <div id="content">
       <div v-if="showBooks">
-        <p>{{title }} - {{author}} - {{age}}</p>
+        <ul>
+          <li v-for="book in books">{{ book.title }} - {{ book.author }}</li>
+        </ul>
       </div>
 
       <button @click="toggleShowBox">
