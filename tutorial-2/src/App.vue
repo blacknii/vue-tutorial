@@ -2,11 +2,28 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button @click="handleClick">click me</button>
-  <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
-  </div>
+  <teleport to=".modals" v-if="showModal">
+    <Modal theme="sale" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">home</a>
+        <a href="#">info</a>
+      </template>
+      <h1>Random header</h1>
+      <p>Random paragraph</p>
+    </Modal>
+  </teleport>
+  <teleport to=".modals" v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <template v-slot:links>
+        <a href="#">buy</a>
+      </template>
+      <h1>Random header 2</h1>
+      <p>Random paragraph 2</p>
+    </Modal>
+  </teleport>
   <br />
   <button @click.alt="toggleModal">open modal (alt)</button>
+  <button @click="toggleModalTwo">open modal two</button>
 </template>
 
 <script>
@@ -18,9 +35,8 @@ export default {
   data() {
     return {
       title: "My first Vue app",
-      header: "random message",
-      text: "random subtext",
       showModal: false,
+      showModalTwo: false,
     };
   },
   methods: {
@@ -32,12 +48,16 @@ export default {
     toggleModal() {
       this.showModal = !this.showModal;
     },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
+    },
   },
 };
 </script>
 
 <style>
-#app {
+#app,
+.modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
