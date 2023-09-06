@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name: "Block",
   props: ["delay"],
   data() {
     return {
