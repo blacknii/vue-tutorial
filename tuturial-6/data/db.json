@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Create new homepage banner",
       "details": "Lorem ipsum",
-      "complete": false
+      "complete": true
     },
     {
       "id": 2,
@@ -19,7 +19,8 @@
       "id": 7
     },
     {
-      "id": 8
+      "id": 8,
+      "complete": true
     },
     {
       "title": "empty title",
@@ -30,7 +31,7 @@
     {
       "title": "empty title",
       "details": "empty details",
-      "complete": false,
+      "complete": true,
       "id": 10
     },
     {
@@ -44,12 +45,6 @@
       "details": "empty details",
       "complete": false,
       "id": 12
-    },
-    {
-      "title": "asd",
-      "details": "asd",
-      "complete": false,
-      "id": 13
     }
   ]
 }

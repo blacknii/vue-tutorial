@@ -1,7 +1,7 @@
 <template>
   <div class="home">Home</div>
   <FilterNav />
-  <div v-if="projects.length">
+  <div v-if="projects.length" class="tasks">
     <SimpleProduct v-for="project in projects" :product="project" />
   </div>
   <div v-else>Loading</div>
@@ -27,3 +27,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+</style>
