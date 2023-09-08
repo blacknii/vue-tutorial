@@ -7,30 +7,14 @@
       "complete": true
     },
     {
-      "id": 2,
-      "title": "Make marketing email",
-      "details": "Lorem ipsum",
-      "complete": false
-    },
-    {
-      "title": "Make marketing email 2",
-      "details": "Lorem ipsum 2",
+      "title": "Make marketing email 3",
+      "details": "sdfsdfsdf",
       "complete": true,
       "id": 7
     },
     {
-      "id": 8,
-      "complete": true
-    },
-    {
-      "title": "empty title",
-      "details": "empty details",
-      "complete": false,
-      "id": 9
-    },
-    {
-      "title": "empty title",
-      "details": "empty details",
+      "title": "dgdfgdfg",
+      "details": "dfgdfg",
       "complete": true,
       "id": 10
     },
@@ -41,10 +25,16 @@
       "id": 11
     },
     {
-      "title": "empty title",
-      "details": "empty details",
+      "title": "dfsdfg",
+      "details": "dsfgsdfg",
       "complete": false,
       "id": 12
+    },
+    {
+      "title": "normal",
+      "details": "fgh",
+      "complete": true,
+      "id": 13
     }
   ]
 }

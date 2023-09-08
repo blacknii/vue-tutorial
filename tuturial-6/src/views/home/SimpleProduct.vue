@@ -1,6 +1,10 @@
 <template>
-  <div class="task" :class="product.complete ? 'done-task' : 'unfinished-task'">
-    <h4>Simple Product {{ product.title }}</h4>
+  <div
+    class="task"
+    :class="product.complete ? 'done-task' : 'unfinished-task'"
+    @click="test"
+  >
+    <h4>{{ product.title }}</h4>
     <div class="buttons">
       <button @click="del" class="btn-task">delete</button>
       <button @click="edit" class="btn-task">edit</button>
@@ -13,6 +17,9 @@
 export default {
   props: ["product"],
   methods: {
+    test() {
+      this.$emit("someEvent");
+    },
     del() {
       console.log(
         "delete",
@@ -23,10 +30,12 @@ export default {
       });
     },
     edit() {
-      console.log("edit");
+      this.$router.push({
+        name: "editProject",
+        params: { id: this.product.id },
+      });
     },
     check() {
-      console.log("check");
       fetch(`http://localhost:3000/projects/${this.product.id}`, {
         method: "PATCH",
         headers: {
@@ -41,7 +50,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .task {
   display: flex;
   align-items: center;
