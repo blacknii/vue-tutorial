@@ -1,10 +1,9 @@
 <template>
-  <div
-    class="task"
-    :class="product.complete ? 'done-task' : 'unfinished-task'"
-    @click="test"
-  >
-    <h4>{{ product.title }}</h4>
+  <div class="task" :class="product.complete ? 'done-task' : 'unfinished-task'">
+    <div>
+      <h3 @click="toggleDetails">{{ product.title }}</h3>
+      <p v-if="showDetails">{{ product.details }}</p>
+    </div>
     <div class="buttons">
       <button @click="del" class="btn-task">delete</button>
       <button @click="edit" class="btn-task">edit</button>
@@ -16,18 +15,20 @@
 <script>
 export default {
   props: ["product"],
+  data() {
+    return {
+      showDetails: false,
+      uri: `http://localhost:3000/projects/${this.product.id}`,
+    };
+  },
   methods: {
-    test() {
-      this.$emit("someEvent");
+    toggleDetails() {
+      this.showDetails = !this.showDetails;
     },
     del() {
-      console.log(
-        "delete",
-        `http://localhost:3000/projects/${this.product.id}`
-      );
-      fetch(`http://localhost:3000/projects/${this.product.id}`, {
+      fetch(this.uri, {
         method: "DELETE",
-      });
+      }).then(() => this.$emit("someEvent"));
     },
     edit() {
       this.$router.push({
@@ -36,7 +37,7 @@ export default {
       });
     },
     check() {
-      fetch(`http://localhost:3000/projects/${this.product.id}`, {
+      fetch(this.uri, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +45,7 @@ export default {
         body: JSON.stringify({
           complete: !this.product.complete,
         }),
-      });
+      }).then(() => this.$emit("someEvent"));
     },
   },
 };
@@ -87,5 +88,9 @@ export default {
 
 .btn-task:hover {
   background-color: #f0f0f0;
+}
+
+h3 {
+  cursor: pointer;
 }
 </style>

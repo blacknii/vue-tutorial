@@ -2,14 +2,14 @@
   "projects": [
     {
       "id": 1,
-      "title": "Create new homepage banner",
-      "details": "Lorem ipsum",
+      "title": "Create new homepage 2",
+      "details": "Lorem ipsum 2",
       "complete": true
     },
     {
       "title": "Make marketing email 3",
       "details": "sdfsdfsdf",
-      "complete": true,
+      "complete": false,
       "id": 7
     },
     {
@@ -19,22 +19,28 @@
       "id": 10
     },
     {
-      "title": "Super Project",
-      "details": "This Project is super",
-      "complete": false,
-      "id": 11
-    },
-    {
-      "title": "dfsdfg",
-      "details": "dsfgsdfg",
-      "complete": false,
-      "id": 12
-    },
-    {
       "title": "normal",
       "details": "fgh",
-      "complete": true,
+      "complete": false,
       "id": 13
+    },
+    {
+      "title": "fgdfgdfg",
+      "details": "dfgfg",
+      "complete": false,
+      "id": 16
+    },
+    {
+      "title": "sadsf",
+      "details": "dsfsdf",
+      "complete": true,
+      "id": 17
+    },
+    {
+      "title": "asdasd",
+      "details": "dasdasd",
+      "complete": false,
+      "id": 18
     }
   ]
 }

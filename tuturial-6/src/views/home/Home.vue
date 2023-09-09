@@ -1,19 +1,11 @@
 <template>
   <FilterNav @filter="test2" />
-  <div class="tasks">
-    <div v-if="projects.length" v-for="project in projects">
-      <SimpleProduct
-        :product="project"
-        @someEvent="test"
-        v-if="
-          filter === 'view all' ||
-          (filter === 'completed' && project.complete) ||
-          (filter === 'ongoing' && !project.complete)
-        "
-      />
+  <div class="tasks" v-if="projects.length">
+    <div v-for="project in filteredProjects" :key="project.id">
+      <SimpleProduct :product="project" @someEvent="test" />
     </div>
-    <div v-else>Loading</div>
   </div>
+  <div v-else>Loading</div>
 </template>
 
 <script>
@@ -45,6 +37,17 @@ export default {
     },
     test2(e) {
       this.filter = e;
+    },
+  },
+  computed: {
+    filteredProjects() {
+      if (this.filter === "completed") {
+        return this.projects.filter((project) => project.complete);
+      }
+      if (this.filter === "ongoing") {
+        return this.projects.filter((project) => !project.complete);
+      }
+      return this.projects;
     },
   },
 };

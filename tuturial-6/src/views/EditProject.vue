@@ -15,9 +15,20 @@ export default {
     return {
       title: "",
       details: "",
+      complete: false,
     };
   },
   props: ["id"],
+  mounted() {
+    fetch(`http://localhost:3000/projects/${this.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        this.title = data.title;
+        this.details = data.details;
+      })
+
+      .catch((err) => console.error(err.message));
+  },
   methods: {
     edit() {
       const newProject = {
@@ -34,9 +45,11 @@ export default {
           title: this.title,
           details: this.details,
         }),
-      });
-      this.title = "";
-      this.details = "";
+      }).then(() =>
+        this.$router.push({
+          name: "home",
+        })
+      );
     },
   },
 };

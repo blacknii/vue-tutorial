@@ -1,5 +1,5 @@
 <template>
-  <div class="buttons">
+  <nav class="buttons">
     <button
       @click="select('view all')"
       class="btn"
@@ -21,7 +21,7 @@
     >
       ONGOING
     </button>
-  </div>
+  </nav>
 </template>
 
 <script>
