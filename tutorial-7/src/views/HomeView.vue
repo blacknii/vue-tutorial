@@ -1,7 +1,15 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList :posts="posts" />
+    <div v-if="error">
+      <p>Error - {{ error }}</p>
+    </div>
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>
+      <p>Loading...</p>
+    </div>
   </div>
 </template>
 
@@ -15,16 +23,23 @@ export default {
   name: "HomeView",
   components: { PostList },
   setup() {
-    const posts = ref([
-      {
-        title: "welcome to the blog",
-        body: "Lorem dolor3",
-        id: 1,
-      },
-      { title: "top 5 CSS tips", body: "lorem ipsum", id: 2 },
-    ]);
+    const posts = ref([]);
+    const error = ref(null);
 
-    return { posts };
+    const load = async () => {
+      try {
+        const data = await fetch("http://localhost:3000/posts");
+        if (!data.ok) throw Error("no data available");
+        posts.value = await data.json();
+      } catch (err) {
+        error.value = err.message;
+        console.error(error.value);
+      }
+    };
+
+    load();
+
+    return { posts, error };
   },
 };
 </script>
