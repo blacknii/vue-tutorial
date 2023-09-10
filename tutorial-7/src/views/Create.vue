@@ -16,6 +16,7 @@
 <script>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { projectFirestore } from "../firebase/config";
 
 export default {
   setup() {
@@ -25,10 +26,13 @@ export default {
     const tag = ref("");
 
     const router = useRouter();
+    //console.log(router)
+    //router.go(1)
+    //router.go(-1)
 
     const handleKeydown = () => {
-      tag.value = tag.value.replace(/\s/g, ""); // remove all whitespace
       if (!tags.value.includes(tag.value)) {
+        tag.value = tag.value.replace(/\s/g, ""); // remove all whitespace
         tags.value.push(tag.value);
       }
       tag.value = "";
@@ -36,24 +40,15 @@ export default {
 
     const handleSubmit = async () => {
       const post = {
+        id: Math.floor(Math.random() * 10000),
         title: title.value,
         body: body.value,
         tags: tags.value,
       };
 
-      await fetch("http://localhost:3000/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(post),
-      });
+      const res = await projectFirestore.collection("posts").add(post);
 
-      title.value = "";
-      body.value = "";
-      tags.value = [];
-
-      router.push({ name: "home" });
+      router.push({ name: "Home" });
     };
 
     return { body, title, tags, tag, handleKeydown, handleSubmit };

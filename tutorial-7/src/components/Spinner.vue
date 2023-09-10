@@ -15,8 +15,6 @@
 }
 
 @keyframes spin {
-  to {
-    -webkit-transform: rotateZ(360deg);
-  }
+  to { -webkit-transform: rotateZ(360deg);  }
 }
 </style>
