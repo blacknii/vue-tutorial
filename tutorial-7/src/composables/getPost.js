@@ -6,6 +6,10 @@ const getPost = (id) => {
 
   const load = async () => {
     try {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 2000);
+      });
+
       const data = await fetch("http://localhost:3000/posts/" + id);
       if (!data.ok) throw Error("that post is not available");
       post.value = await data.json();
