@@ -4,12 +4,15 @@
       <h3>{{ post.title }}</h3>
     </router-link>
     <p>{{ snippet }}</p>
-    <span v-for="tag in post.tags" :key="tag"> #{{ tag }} </span>
+    <span v-for="tag in post.tags" :key="tag">
+      <span class="pill" @click="handleClick(tag)">#{{ tag + " " }}</span>
+    </span>
   </div>
 </template>
 
 <script>
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   props: ["post"],
@@ -18,9 +21,18 @@ export default {
       return post.body.substring(0, 100) + "...";
     });
 
-    return { snippet };
+    const router = useRouter();
+    const handleClick = (tag) => {
+      router.push({ name: "tag", params: { tag: tag } });
+    };
+
+    return { snippet, handleClick };
   },
 };
 </script>
 
-<style></style>
+<style>
+.pill {
+  cursor: pointer;
+}
+</style>
