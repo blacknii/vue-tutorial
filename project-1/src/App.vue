@@ -11,7 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
       <nav>
         <RouterLink to="/">Notes</RouterLink>
-        <RouterLink to="/about">New Note</RouterLink>
+        <RouterLink to="/new-note">New Note</RouterLink>
       </nav>
     </div>
   </header>
@@ -23,16 +23,5 @@ import { RouterLink, RouterView } from 'vue-router'
 nav {
   display: flex;
   gap: 1rem;
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: red;
-  padding: 0;
 }
 </style>

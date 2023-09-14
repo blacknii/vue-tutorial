@@ -1,9 +1,5 @@
 <template>
-  <main>
-    <SuperComponent />
-  </main>
+  <h1>This is an new note page</h1>
 </template>
 
-<script setup>
-import SuperComponent from '../components/SuperComponent.vue'
-</script>
+<script></script>
