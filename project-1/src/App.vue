@@ -10,8 +10,8 @@ import { RouterLink, RouterView } from 'vue-router'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Notes</RouterLink>
+        <RouterLink to="/about">New Note</RouterLink>
       </nav>
     </div>
   </header>
@@ -19,4 +19,20 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped></style>
+<style>
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: red;
+  padding: 0;
+}
+</style>
