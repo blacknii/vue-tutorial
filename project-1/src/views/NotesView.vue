@@ -1,5 +1,4 @@
 <template>
-  <h1>This is an notes page</h1>
   <!-- <p v-for="note in notes" :key="note.id">{{ note.content }}</p> -->
   <div class="notes">
     <SingleNote v-for="note in notes" :key="note.id" :note="note" />
