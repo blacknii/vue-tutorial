@@ -5,7 +5,6 @@
     </div>
     <div class="actions">
       <button @click="del">delete</button>
-      <button @click="edit">edit</button>
     </div>
   </div>
 </template>
@@ -13,16 +12,21 @@
 <script>
 export default {
   props: ['note'],
-  setup() {
+  setup({ note }, { emit }) {
+    const notes = []
+
+    if (localStorage.getItem('notes')) {
+      JSON.parse(localStorage.getItem('notes')).forEach((note) => notes.push(note))
+    }
+
     const del = () => {
       console.log('delete')
+      const newNotes = notes.filter((currentNote) => currentNote.id !== note.id)
+      localStorage.setItem('notes', JSON.stringify(newNotes))
+      emit('del', note.id)
     }
 
-    const edit = () => {
-      console.log('edit')
-    }
-
-    return { del, edit }
+    return { del }
   }
 }
 </script>

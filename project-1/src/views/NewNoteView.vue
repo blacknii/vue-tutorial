@@ -25,19 +25,19 @@ export default {
 
     console.log(notes)
 
-    const newId = ref(db[db.length - 1].id + 1)
+    let newId = notes[notes.length - 1].id + 1
 
     const noteContent = ref('')
     const submit = () => {
       const note = {
-        id: newId.value,
+        id: newId,
         content: noteContent.value
       }
 
       notes.push(note)
 
       localStorage.setItem('notes', JSON.stringify(notes))
-      newId.value = ''
+      newId = 0
       router.push({ name: 'home' })
     }
 
