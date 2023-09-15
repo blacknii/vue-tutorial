@@ -12,8 +12,6 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import db from '../../data/notes'
-
 export default {
   setup() {
     const router = useRouter()
