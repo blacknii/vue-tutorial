@@ -21,9 +21,7 @@ export default {
       JSON.parse(localStorage.getItem('notes')).forEach((note) => notes.push(note))
     }
 
-    console.log(notes)
-
-    let newId = notes[notes.length - 1].id + 1
+    let newId = notes.length > 0 ? notes[notes.length - 1].id + 1 : 1
 
     const noteContent = ref('')
     const submit = () => {
