@@ -17,6 +17,13 @@ import db from '../../data/notes'
 export default {
   setup() {
     const router = useRouter()
+    const notes = []
+
+    if (localStorage.getItem('notes')) {
+      JSON.parse(localStorage.getItem('notes')).forEach((note) => notes.push(note))
+    }
+
+    console.log(notes)
 
     const newId = ref(db[db.length - 1].id + 1)
 
@@ -27,9 +34,9 @@ export default {
         content: noteContent.value
       }
 
-      console.log(note)
+      notes.push(note)
 
-      localStorage.setItem('notes', JSON.stringify(note))
+      localStorage.setItem('notes', JSON.stringify(notes))
       newId.value = ''
       router.push({ name: 'home' })
     }

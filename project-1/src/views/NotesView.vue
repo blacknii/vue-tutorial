@@ -13,10 +13,9 @@ export default {
   components: { SingleNote },
   setup() {
     const notes = ref([])
-    // if (localStorage.getItem('notes')) {
-    //   notes.value = JSON.parse(localStorage.getItem('notes'))
-    // }
-
+    if (localStorage.getItem('notes')) {
+      notes.value = JSON.parse(localStorage.getItem('notes'))
+    }
     return { notes }
   }
 }
