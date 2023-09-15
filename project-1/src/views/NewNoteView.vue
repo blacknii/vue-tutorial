@@ -10,16 +10,28 @@
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 import db from '../../data/notes'
 
 export default {
   setup() {
-    console.log({ db })
+    const router = useRouter()
+
     const newId = ref(db[db.length - 1].id + 1)
 
-    const noteContent = ref('test')
+    const noteContent = ref('')
     const submit = () => {
-      console.log(noteContent.value)
+      const note = {
+        id: newId.value,
+        content: noteContent.value
+      }
+
+      console.log(note)
+
+      localStorage.setItem('notes', JSON.stringify(note))
+      newId.value = ''
+      router.push({ name: 'home' })
     }
 
     return { newId, submit, noteContent }

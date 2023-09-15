@@ -7,13 +7,15 @@
 
 <script>
 import { ref } from 'vue'
-import db from '../../data/notes'
 import SingleNote from '../components/SingleNote.vue'
 
 export default {
   components: { SingleNote },
   setup() {
-    const notes = ref(db)
+    const notes = ref([])
+    // if (localStorage.getItem('notes')) {
+    //   notes.value = JSON.parse(localStorage.getItem('notes'))
+    // }
 
     return { notes }
   }
