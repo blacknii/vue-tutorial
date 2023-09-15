@@ -9,6 +9,11 @@ const db = [
   {
     id: 5,
     content: 'List five things on your bucket list and why you want to experience them.'
+  },
+  {
+    id: 6,
+    content:
+      'List five things on your bucket list and why you want to experience them. List five things on your bucket list and why you want to experience them.'
   }
 ]
 
