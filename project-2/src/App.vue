@@ -176,7 +176,7 @@
   </q-layout>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from "vue";
 import { fabYoutube } from "@quasar/extras/fontawesome-v6";
 
