@@ -1,16 +1,15 @@
 import axios from "axios";
 
-const getCharacter = async (id: string) => {
+const getCharacters = async () => {
   try {
     const response = await axios.get(
       "https://thronesapi.com/api/v2/Characters/"
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error("Error fetching character data:", error);
+    console.error("Error fetching characters data:", error);
     return null; // Return null or handle the error as needed
   }
 };
 
-export default getCharacter;
+export default getCharacters;
