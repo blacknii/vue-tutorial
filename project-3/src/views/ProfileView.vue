@@ -1,10 +1,10 @@
 <template>
-  <h4>This is an profile page, id: {{ id }}, name: {{ characterName }}</h4>
+  <h4>This is a profile page, id: {{ id }}, name: {{ characterName }}</h4>
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import { ref, onMounted } from "vue";
+import getCharacter from "../composables/getCharacter";
 
 export default {
   props: ["id"],
@@ -13,13 +13,9 @@ export default {
     const characterName = ref("");
 
     onMounted(async () => {
-      try {
-        const res = await axios.get(
-          "https://thronesapi.com/api/v2/Characters/" + props.id
-        );
-        characterName.value = res.data.fullName;
-      } catch (error) {
-        console.error("Error fetching character data:", error);
+      const name = await getCharacter(props.id);
+      if (name !== null) {
+        characterName.value = name;
       }
     });
 
