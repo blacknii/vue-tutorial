@@ -5,7 +5,7 @@ const getCharacter = async (id: string) => {
     const response = await axios.get(
       "https://thronesapi.com/api/v2/Characters/" + id
     );
-    return response.data.fullName;
+    return response.data;
   } catch (error) {
     console.error("Error fetching character data:", error);
     return null; // Return null or handle the error as needed
