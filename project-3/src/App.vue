@@ -13,7 +13,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer elevated>
+    <q-footer elevated reveal>
       <q-toolbar>
         <q-toolbar-title>Footer</q-toolbar-title>
       </q-toolbar>
